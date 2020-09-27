@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4dW-Gx-bC4">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="NSI-Vo-pvi">
+            <objects>
+                <viewController id="4dW-Gx-bC4" customClass="ViewController" customModule="VKImagePicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5xs-as-2tw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOq-Qg-ziH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.80392156859999997" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Y5q-WY-pxW"/>
+                                </constraints>
+                                <state key="normal" title="show imagePicker">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" systemColor="systemPinkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="onButtonShowImagePicker:" destination="4dW-Gx-bC4" eventType="touchUpInside" id="mFM-Fi-eGu"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3th-tV-JI9">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dF9-ak-WWf">
+                                    <size key="itemSize" width="10" height="10"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DemoCollectionViewCell" id="jct-Zn-gvj" customClass="DemoCollectionViewCell" customModule="VKImagePicker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NJJ-Ha-aHr">
+                                            <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-q7-Vvb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Fcz-q7-Vvb" firstAttribute="top" secondItem="NJJ-Ha-aHr" secondAttribute="top" id="1qh-xf-EKy"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fcz-q7-Vvb" secondAttribute="bottom" id="Gwb-st-9kb"/>
+                                                <constraint firstItem="Fcz-q7-Vvb" firstAttribute="leading" secondItem="NJJ-Ha-aHr" secondAttribute="leading" id="J2L-q5-3cw"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fcz-q7-Vvb" secondAttribute="trailing" id="Sl2-ry-Vf4"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="10" height="10"/>
+                                        <connections>
+                                            <outlet property="contentImageView" destination="Fcz-q7-Vvb" id="nfy-Fb-0Bl"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nEH-IP-la8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3th-tV-JI9" firstAttribute="top" secondItem="WOq-Qg-ziH" secondAttribute="bottom" id="0jS-Ws-nWb"/>
+                            <constraint firstItem="nEH-IP-la8" firstAttribute="trailing" secondItem="WOq-Qg-ziH" secondAttribute="trailing" id="RD2-qO-TkT"/>
+                            <constraint firstItem="nEH-IP-la8" firstAttribute="trailing" secondItem="3th-tV-JI9" secondAttribute="trailing" id="VdR-k4-Pm8"/>
+                            <constraint firstItem="nEH-IP-la8" firstAttribute="bottom" secondItem="3th-tV-JI9" secondAttribute="bottom" id="dUf-3E-XKk"/>
+                            <constraint firstItem="3th-tV-JI9" firstAttribute="leading" secondItem="nEH-IP-la8" secondAttribute="leading" id="gjk-07-EEC"/>
+                            <constraint firstItem="WOq-Qg-ziH" firstAttribute="leading" secondItem="nEH-IP-la8" secondAttribute="leading" id="hki-o1-WDv"/>
+                            <constraint firstItem="WOq-Qg-ziH" firstAttribute="top" secondItem="nEH-IP-la8" secondAttribute="top" id="yJJ-5l-O2S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="3th-tV-JI9" id="axT-PX-tvV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0sH-l1-22z" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="146" y="64"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
