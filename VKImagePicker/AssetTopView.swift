@@ -14,7 +14,7 @@ class AssetTopView: UIView {
         let button  = UIButton.init(type: .custom)
         button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         return button
     }()
     
@@ -42,15 +42,15 @@ class AssetTopView: UIView {
         addSubview(backButton)
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
             titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             titleLabel.widthAnchor.constraint(equalToConstant: 120),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            titleLabel.heightAnchor.constraint(equalToConstant: 32),
             
             backButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor, constant: 0),
             backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             backButton.widthAnchor.constraint(equalToConstant: 60),
-            backButton.heightAnchor.constraint(equalToConstant: 30)
+            backButton.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
 

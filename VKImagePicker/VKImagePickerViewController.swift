@@ -29,7 +29,9 @@ public class VKImagePickerViewController: UIViewController {
     
     public var type:ImagePickerType = .onlyPhotoLib
     
-    //Left circle
+    public var shouldSavePhoto = false
+    
+    //vc circle
     open override func viewDidLoad() {
         super.viewDidLoad()
         if checkInfoDictionary(){
@@ -90,7 +92,6 @@ public class VKImagePickerViewController: UIViewController {
     override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIInterfaceOrientation.portrait
     }
-    
 
 }
 
@@ -106,6 +107,22 @@ extension VKImagePickerViewController{
             return true
         }
     }
+    
+    func selectDone(with images:[UIImage]){
+        if shouldSavePhoto{
+            DispatchQueue.init(label: "ImagePicker.save",qos: .utility).async {
+                for image in images{
+                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.saveError(_:didFinishSavingWithError:contextInfo:)), nil)
+                }
+            }
+        }
+        delegate?.didSelectDone(self, images: images)
+    }
+    
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        
+    }
+    
     func presentEditViewController(with images:[UIImage]){
         let vc = VKImageEditPreviewViewController.init(images: images,configure:configuration.editConfigure)
         let navagation = UINavigationController.init(rootViewController: vc)
@@ -126,7 +143,7 @@ extension VKImagePickerViewController:AssetViewDelegate{
         if isCanEdit{
             presentEditViewController(with: selectImages)
         }else{
-            delegate?.didSelectDone(self, images: selectImages)
+            selectDone(with: selectImages)
         }
     }
     
@@ -146,7 +163,7 @@ extension VKImagePickerViewController:VKCameraViewDelegate{
         if isCanEdit{
             presentEditViewController(with: selectImages)
         }else{
-            delegate?.didSelectDone(self, images: selectImages)
+            selectDone(with: selectImages)
         }
     }
     
@@ -158,6 +175,6 @@ extension VKImagePickerViewController:VKImagePickerControllerDelegate{
     }
     
     public func didSelectDone(_ imagePicker: UIViewController, images: [UIImage]) {
-        delegate?.didSelectDone(self, images: images)
+        selectDone(with: images)
     }
 }

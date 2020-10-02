@@ -16,10 +16,10 @@ let statusHeight :CGFloat = {
 public class VKImageEditViewController: UIViewController, UIGestureRecognizerDelegate {
     
     private struct Demension{
-        static let bottomOffset:CGFloat = -12
+        static let bottomOffset:CGFloat = -20
         static let trailingOffset:CGFloat = -12
         static let suerButtonSize = CGSize.init(width: 80, height: 40)
-        static let toolEdage = UIEdgeInsets.init(top: -20, left: 25, bottom: 0, right: 20)
+        static let toolEdage = UIEdgeInsets.init(top: -35, left: 25, bottom: 0, right: 20)
         static let subEdage = UIEdgeInsets.init(top: 0, left: 12, bottom: 0, right: -12)
         static let backTopOffset:CGFloat = statusHeight + 20
         static let backLeadingOffset:CGFloat = 12
@@ -49,6 +49,8 @@ public class VKImageEditViewController: UIViewController, UIGestureRecognizerDel
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.backgroundColor = .clear
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.red.cgColor
         imageView.drawDelegate = self
         return imageView
     }()
@@ -103,6 +105,7 @@ public class VKImageEditViewController: UIViewController, UIGestureRecognizerDel
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(AssetManager.getImage("revoke"), for: .normal)
         button.setImage(AssetManager.getImage("revoke_disable"), for: .disabled)
+        button.isHidden = true
         button.addTarget(self, action: #selector(revokeDrawImage), for: .touchUpInside)
         button.isEnabled = false
         return button
@@ -183,14 +186,12 @@ extension VKImageEditViewController{
 
         scrollView.addSubview(contentView)
         contentView.addSubview(imageView)
-        imageView.image = editImage
-        
-        
         
         scrollView.frame = view.frame
         contentView.frame = scrollView.frame
         imageView.frame = contentView.bounds
         
+        imageView.image = editImage
         
         resetupScrollContentFrame()
         
@@ -242,7 +243,7 @@ extension VKImageEditViewController{
     
     func resetupScrollContentFrame(){
         scrollView.zoomScale = 1
-
+        imageView.frame = imageView.contentClippingRect
     }
     
     func setupSubViewLayout(){
@@ -279,7 +280,7 @@ extension VKImageEditViewController{
     }
     
     @objc func revokeDrawImage(){
-        imageView.removeLastColorLine()
+        imageView.revokeLastDraw()
     }
 }
 
@@ -293,8 +294,8 @@ extension VKImageEditViewController:DrawImageViewDelegate{
         updateBottomView(isEdit: false)
     }
     
-    func drawColorLineDidChange(_ currentLines: [CAShapeLayer]) {
-        revokeButton.isEnabled = currentLines.count > 0
+    func drawColorLineDidChange(_ currentLines: [CAShapeLayer]?) {
+        revokeButton.isEnabled = currentLines?.count ?? 0 > 0
     }
     
     
@@ -352,18 +353,24 @@ extension VKImageEditViewController:UICollectionViewDataSource, UICollectionView
                 selectToolIndex = indexPath
             }
             let isEditing = selectToolIndex == indexPath
-            switch config.editList[indexPath.row] {
-            case .line:
-                if isEditing{
+            subCollectionView.isHidden = !isEditing
+            revokeButton.isHidden = !isEditing
+            if isEditing{
+                switch config.editList[indexPath.row] {
+                case .line:
                     imageView.type = .line
-                }else{
-                    imageView.type = .none
+                    revokeButton.isEnabled = imageView.drawColorLayers.count > 0
+                case .mosaic:
+                    subCollectionView.isHidden = true
+                    revokeButton.isEnabled = imageView.mosicMaskLayers.count > 0
+                    imageView.prepareMosica { (finish) in
+                        
+                    }
+                default:
+                    break
                 }
-                fallthrough
-            case .mosaic:
-                fallthrough
-            default:
-                subCollectionView.isHidden = !isEditing
+            }else{
+                imageView.type = .none
             }
         }else{
             selectColorIndex = indexPath

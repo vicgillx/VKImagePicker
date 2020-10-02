@@ -111,6 +111,7 @@ extension UIImage{
         UIGraphicsGetCurrentContext()
         return fitImage
     }
+    
 }
 
 extension UIDevice{

@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97968F5A2526F9BE00160FA0 /* AssetTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97968F592526F9BE00160FA0 /* AssetTopView.swift */; };
+		97968F5D2526F9C500160FA0 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97968F5C2526F9C500160FA0 /* AssetManager.swift */; };
 		97FB366325208A7B00A5EA22 /* VKImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 97FB366125208A7B00A5EA22 /* VKImagePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97FB369E25208C4900A5EA22 /* VKImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB368D25208C4800A5EA22 /* VKImagePickerViewController.swift */; };
-		97FB36A025208C4900A5EA22 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB368F25208C4800A5EA22 /* AssetManager.swift */; };
 		97FB36A125208C4900A5EA22 /* VKImagePickerBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97FB369025208C4800A5EA22 /* VKImagePickerBundle.bundle */; };
 		97FB36A225208C4900A5EA22 /* VKImageEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369125208C4800A5EA22 /* VKImageEditViewController.swift */; };
 		97FB36A325208C4900A5EA22 /* VKImagePicker+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369225208C4800A5EA22 /* VKImagePicker+Extension.swift */; };
@@ -21,17 +22,17 @@
 		97FB36A925208C4900A5EA22 /* VKRequestPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369825208C4900A5EA22 /* VKRequestPermissionView.swift */; };
 		97FB36AA25208C4900A5EA22 /* VKImageEditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369925208C4900A5EA22 /* VKImageEditCollectionViewCell.swift */; };
 		97FB36AB25208C4900A5EA22 /* VKImageEditPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369A25208C4900A5EA22 /* VKImageEditPreviewViewController.swift */; };
-		97FB36AC25208C4900A5EA22 /* AssetTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369B25208C4900A5EA22 /* AssetTopView.swift */; };
 		97FB36AD25208C4900A5EA22 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369C25208C4900A5EA22 /* Configuration.swift */; };
 		97FB36AE25208C4900A5EA22 /* VKDrawImgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB369D25208C4900A5EA22 /* VKDrawImgeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97968F592526F9BE00160FA0 /* AssetTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTopView.swift; sourceTree = "<group>"; };
+		97968F5C2526F9C500160FA0 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		97FB365E25208A7B00A5EA22 /* VKImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VKImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FB366125208A7B00A5EA22 /* VKImagePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKImagePicker.h; sourceTree = "<group>"; };
 		97FB366225208A7B00A5EA22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97FB368D25208C4800A5EA22 /* VKImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKImagePickerViewController.swift; sourceTree = "<group>"; };
-		97FB368F25208C4800A5EA22 /* AssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		97FB369025208C4800A5EA22 /* VKImagePickerBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VKImagePickerBundle.bundle; sourceTree = "<group>"; };
 		97FB369125208C4800A5EA22 /* VKImageEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKImageEditViewController.swift; sourceTree = "<group>"; };
 		97FB369225208C4800A5EA22 /* VKImagePicker+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VKImagePicker+Extension.swift"; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		97FB369825208C4900A5EA22 /* VKRequestPermissionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKRequestPermissionView.swift; sourceTree = "<group>"; };
 		97FB369925208C4900A5EA22 /* VKImageEditCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKImageEditCollectionViewCell.swift; sourceTree = "<group>"; };
 		97FB369A25208C4900A5EA22 /* VKImageEditPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKImageEditPreviewViewController.swift; sourceTree = "<group>"; };
-		97FB369B25208C4900A5EA22 /* AssetTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTopView.swift; sourceTree = "<group>"; };
 		97FB369C25208C4900A5EA22 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		97FB369D25208C4900A5EA22 /* VKDrawImgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKDrawImgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,17 +78,16 @@
 		97FB366025208A7B00A5EA22 /* VKImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				97FB369025208C4800A5EA22 /* VKImagePickerBundle.bundle */,
-				97FB369625208C4900A5EA22 /* AssetCollectionViewCell.swift */,
-				97FB368F25208C4800A5EA22 /* AssetManager.swift */,
-				97FB369B25208C4900A5EA22 /* AssetTopView.swift */,
+				97968F5C2526F9C500160FA0 /* AssetManager.swift */,
 				97FB369C25208C4900A5EA22 /* Configuration.swift */,
 				97FB369725208C4900A5EA22 /* VKCameraManager.swift */,
 				97FB369325208C4800A5EA22 /* VKCameraView.swift */,
 				97FB369D25208C4900A5EA22 /* VKDrawImgeView.swift */,
-				97FB369425208C4800A5EA22 /* VKEditPreviewCollectionViewCell.swift */,
+				97968F592526F9BE00160FA0 /* AssetTopView.swift */,
 				97FB369525208C4800A5EA22 /* VKImageAssetView.swift */,
+				97FB369625208C4900A5EA22 /* AssetCollectionViewCell.swift */,
 				97FB369925208C4900A5EA22 /* VKImageEditCollectionViewCell.swift */,
+				97FB369425208C4800A5EA22 /* VKEditPreviewCollectionViewCell.swift */,
 				97FB369A25208C4900A5EA22 /* VKImageEditPreviewViewController.swift */,
 				97FB369125208C4800A5EA22 /* VKImageEditViewController.swift */,
 				97FB369225208C4800A5EA22 /* VKImagePicker+Extension.swift */,
@@ -96,6 +95,7 @@
 				97FB369825208C4900A5EA22 /* VKRequestPermissionView.swift */,
 				97FB366125208A7B00A5EA22 /* VKImagePicker.h */,
 				97FB366225208A7B00A5EA22 /* Info.plist */,
+				97FB369025208C4800A5EA22 /* VKImagePickerBundle.bundle */,
 			);
 			path = VKImagePicker;
 			sourceTree = "<group>";
@@ -181,12 +181,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				97FB36A625208C4900A5EA22 /* VKImageAssetView.swift in Sources */,
-				97FB36A025208C4900A5EA22 /* AssetManager.swift in Sources */,
 				97FB36AA25208C4900A5EA22 /* VKImageEditCollectionViewCell.swift in Sources */,
 				97FB36A725208C4900A5EA22 /* AssetCollectionViewCell.swift in Sources */,
-				97FB36AC25208C4900A5EA22 /* AssetTopView.swift in Sources */,
 				97FB36AD25208C4900A5EA22 /* Configuration.swift in Sources */,
 				97FB369E25208C4900A5EA22 /* VKImagePickerViewController.swift in Sources */,
+				97968F5A2526F9BE00160FA0 /* AssetTopView.swift in Sources */,
 				97FB36A525208C4900A5EA22 /* VKEditPreviewCollectionViewCell.swift in Sources */,
 				97FB36A225208C4900A5EA22 /* VKImageEditViewController.swift in Sources */,
 				97FB36A425208C4900A5EA22 /* VKCameraView.swift in Sources */,
@@ -194,6 +193,7 @@
 				97FB36A325208C4900A5EA22 /* VKImagePicker+Extension.swift in Sources */,
 				97FB36AB25208C4900A5EA22 /* VKImageEditPreviewViewController.swift in Sources */,
 				97FB36A925208C4900A5EA22 /* VKRequestPermissionView.swift in Sources */,
+				97968F5D2526F9C500160FA0 /* AssetManager.swift in Sources */,
 				97FB36A825208C4900A5EA22 /* VKCameraManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,7 +330,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PGKA949WBS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -361,7 +361,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PGKA949WBS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

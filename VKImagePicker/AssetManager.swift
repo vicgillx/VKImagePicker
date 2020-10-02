@@ -2,6 +2,7 @@
 import Foundation
 import UIKit
 import Photos
+
 open class AssetManager {
     
     public static func getLocalString(_ key:String)->String{
@@ -33,10 +34,10 @@ open class AssetManager {
         let fetchResult = PHAsset.fetchAssets(with: .image, options: PHFetchOptions())
 
         if fetchResult.count > 0 {
+            
           var assets = [PHAsset]()
-
             fetchResult.enumerateObjects({ object, _, _ in
-                assets.insert(object, at: 0)
+                assets.append(object)
             })
 
           DispatchQueue.main.async {

@@ -18,7 +18,7 @@ protocol AssetViewDelegate:class {
 class VKImageAssetView: UIView {
     
     struct Demension {
-        static let doneButtonHeight:CGFloat = 36
+        static let doneButtonHeight:CGFloat = 32
         static let doneButtonMinWidth:CGFloat = 6
         static let doneButtontrailingOffset:CGFloat = -12
         static let doneButtontopOffset:CGFloat = 12
@@ -37,7 +37,7 @@ class VKImageAssetView: UIView {
     lazy var doneButton:UIButton = {
         let doneButton = UIButton.init(type: .custom)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        
+        doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         doneButton.setTitleColor(UIColor.white, for: .normal)
         doneButton.setTitleColor(UIColor.init(white: 1, alpha: 0.5), for: .disabled)
         doneButton.layer.cornerRadius = 5
@@ -50,6 +50,7 @@ class VKImageAssetView: UIView {
     lazy var previewButton:UIButton = {
         let previewButton = UIButton.init(type: .custom)
         previewButton.setTitle(configure.previewButtonTitle, for: .normal)
+        previewButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         previewButton.setTitleColor(UIColor.white, for: .normal)
         previewButton.setTitleColor(UIColor.init(white: 1, alpha: 0.5), for: .disabled)
         previewButton.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +88,7 @@ class VKImageAssetView: UIView {
     
     var assets =  [PHAsset].init()
     
-    var resolveAssets = [UIImage].init()
+    var hadShowAsset = [IndexPath:UIImage].init()
     
     var selectIndexs = [IndexPath].init(){
         didSet{
@@ -192,7 +193,7 @@ class VKImageAssetView: UIView {
     func reloadAsset(){
         AssetManager.fetch { (PhAsset) in
             self.assets = Array.init(PhAsset)
-            self.resolveAssets = Array.init(AssetManager.resolveAssets(PhAsset))
+            //self.resolveAssets = Array.init(AssetManager.resolveAssets(PhAsset))
             self.assetCollectionView.reloadData()
         }
     }
@@ -232,12 +233,24 @@ class VKImageAssetView: UIView {
 
 extension VKImageAssetView:UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resolveAssets.count
+        return assets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssetCollectionViewCell", for: indexPath) as! AssetCollectionViewCell
-        cell.assetImageView.image = resolveAssets[indexPath.row]
+        
+        if let image =  hadShowAsset[indexPath] {
+            cell.assetImageView.image = image
+        }else{
+            cell.assetImageView.image = nil
+            AssetManager.resolveAsset(assets[indexPath.row]) { (image) in
+                cell.assetImageView.image = image
+                if image != nil {
+                    self.hadShowAsset.updateValue(image!, forKey: indexPath)
+                }
+            }
+        }
+
         if let index = selectIndexs.firstIndex(of: indexPath){
             cell.indexLabel.isHidden = false
             cell.statusImageView.isHidden = true
