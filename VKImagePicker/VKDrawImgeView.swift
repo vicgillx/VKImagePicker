@@ -22,25 +22,6 @@ enum ImageViewDrawType {
 
 class VKDrawImgeView: UIImageView {
     private lazy var previousTouchPoint = CGPoint.zero
-    
-    var contentClippingRect: CGRect {
-            guard let image = image else { return bounds }
-            guard contentMode == .scaleAspectFit else { return bounds }
-            guard image.size.width > 0 && image.size.height > 0 else { return bounds }
-
-            let scale: CGFloat
-            if image.size.width > image.size.height {
-                scale = bounds.width / image.size.width
-            } else {
-                scale = bounds.height / image.size.height
-            }
-
-            let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
-            let x = (bounds.width - size.width) / 2.0
-            let y = (bounds.height - size.height) / 2.0
-
-            return CGRect(x: x, y: y, width: size.width, height: size.height)
-    }
 
     var drawColorLayers = [[CAShapeLayer]].init(){
         didSet{
@@ -101,7 +82,7 @@ class VKDrawImgeView: UIImageView {
     
     func prepareMosica(_  completion: (Bool)->Void){
         type = .mosia
-        guard let img = self.image,!self.subviews.contains(mosicMaskView),mosicMaskView.frame == self.bounds else {
+        guard let img = self.image,mosicMaskView.frame != self.bounds else {
             completion(false)
             return
         }
@@ -120,6 +101,7 @@ class VKDrawImgeView: UIImageView {
         self.mosicMaskView.frame = self.bounds
         self.mosicMaskView.isHidden = false
         self.mosicMaskView.layer.mask = CALayer.init()
+        
         completion(true)
     }
     
@@ -224,5 +206,16 @@ class VKDrawImgeView: UIImageView {
             }
 
         }
+    }
+}
+
+
+
+
+// MARK:crop
+extension VKDrawImgeView{
+    func rotationImage_90Angle(){
+        let image =  self.image?.rotationImage(with: 90.0)
+        self.image = image
     }
 }

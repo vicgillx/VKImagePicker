@@ -82,6 +82,7 @@ extension UIView{
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale)
         if let context = UIGraphicsGetCurrentContext() {
             layer.render(in: context)
+            self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
             let screenshot = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             return screenshot
@@ -99,6 +100,27 @@ extension UIView{
     }
 }
 
+extension UIImageView{
+    var contentClippingRect: CGRect {
+            guard let image = image else { return bounds }
+            guard contentMode == .scaleAspectFit else { return bounds }
+            guard image.size.width > 0 && image.size.height > 0 else { return bounds }
+
+            let scale: CGFloat
+            if image.size.width > image.size.height {
+                scale = bounds.width / image.size.width
+            } else {
+                scale = bounds.height / image.size.height
+            }
+
+            let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+            let x = (bounds.width - size.width) / 2.0
+            let y = (bounds.height - size.height) / 2.0
+
+            return CGRect(x: x, y: y, width: size.width, height: size.height)
+    }
+}
+
 
 extension UIImage{
     
@@ -110,6 +132,25 @@ extension UIImage{
         let fitImage:UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage.init()
         UIGraphicsGetCurrentContext()
         return fitImage
+    }
+    
+    func rotationImage(with angle:CGFloat)->UIImage?{
+        let rotationAngle = angle * .pi / 180.0
+        var newSize = CGRect(origin: CGPoint.zero, size: self.size).applying(CGAffineTransform(rotationAngle: rotationAngle)).size
+        newSize.width = floor(newSize.width)
+        newSize.height = floor(newSize.height)
+
+        UIGraphicsBeginImageContextWithOptions(newSize, false, self.scale)
+        let context = UIGraphicsGetCurrentContext()!
+
+        context.translateBy(x: newSize.width/2, y: newSize.height/2)
+        context.rotate(by: rotationAngle)
+        self.draw(in: CGRect(x: -self.size.width/2, y: -self.size.height/2, width: self.size.width, height: self.size.height))
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        print("edit size = \(newImage!.size)")
+        return newImage
     }
     
 }

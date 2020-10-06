@@ -353,8 +353,8 @@ extension VKImageEditViewController:UICollectionViewDataSource, UICollectionView
                 selectToolIndex = indexPath
             }
             let isEditing = selectToolIndex == indexPath
-            subCollectionView.isHidden = !isEditing
-            revokeButton.isHidden = !isEditing
+            subCollectionView.isHidden = (!isEditing || (config.editList[indexPath.row] == .size))
+            revokeButton.isHidden = (!isEditing || config.editList[indexPath.row] == .size)
             if isEditing{
                 switch config.editList[indexPath.row] {
                 case .line:
@@ -366,8 +366,14 @@ extension VKImageEditViewController:UICollectionViewDataSource, UICollectionView
                     imageView.prepareMosica { (finish) in
                         
                     }
-                default:
-                    break
+                case .size:
+                    print("origin size = \(originImage.size)")
+                    guard let screenShot = imageView.screenShot else {return}
+                    let clipView = VKEditImageClipView.init(image: screenShot) { (image) in
+                        self.imageView.image = image
+                        self.imageView.frame = self.imageView.contentClippingRect
+                    }
+                    view.addSubview(clipView)
                 }
             }else{
                 imageView.type = .none
